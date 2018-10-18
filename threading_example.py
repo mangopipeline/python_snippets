@@ -12,7 +12,7 @@ from queue import Queue, Empty  # in python 2.7 import from Queue
 from threading import Thread
 import multiprocessing
 
-# define data (1000 random numbers)
+# define data (1000 integers 0-999)
 DATA = [index for index in range(1000)]
 
 
