@@ -1,8 +1,0 @@
-fn run =
-(
-	__file__ = getThisScriptFilename()
-	__root__ = getFilenamePath __file__
-	__pyfile__ = __root__ + "face_weighted_normals_ui.py"
-	python.ExecuteFile __pyfile__ 
-)
-run()
