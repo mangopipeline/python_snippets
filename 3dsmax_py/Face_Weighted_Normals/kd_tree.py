@@ -10,10 +10,10 @@ def construct_kdtree(mesh):
 	st = time()
 	ws_mesh = MXS.snapshotAsMesh(mesh)
 	verts = [[ws_mesh.verts[i].pos.x,ws_mesh.verts[i].pos.y, ws_mesh.verts[i].pos.z] for i in xrange(ws_mesh.verts.count)] 
+	tree = spatial.cKDTree(verts)
 	print "kdtree took %s seconds to build" % (time()-st)
-	return spatial.cKDTree(verts)
-
-
+	return tree
+	
 def find_verts_by_distance_to_pos(pos,tree,radius):
 	matches =  tree.query_ball_point(pos,radius)
 	return [id+1 for id in matches]
