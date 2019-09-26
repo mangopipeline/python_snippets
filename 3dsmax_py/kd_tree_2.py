@@ -21,13 +21,10 @@ def group_verts_by_distance(verts,radius):
 	'''
 	st = time()
 	tree = spatial.cKDTree(verts)
-	dic = {}
-	
-	for id,pos in enumerate(verts):
-		dic[id] = tree.query_ball_point(pos,radius)
+	out = [tree.query_ball_point(pos,radius) for pos in verts]
 		
 	print "data generated in %s seconds for %s verts" % (len(verts), time()-st)
-	return dic
+	return out
 
 if __name__ == '__main__':
 	st = time()
@@ -37,7 +34,7 @@ if __name__ == '__main__':
 	verts = extract_verts(msh)
 	
 	#create a dictionary where the key is the verted id and the value is a list of id for vertexes that are withing the given radius
-	groups = group_verts_by_distance(verts,10.0)
+	groups = group_verts_by_distance(verts,1.5)
 	
 	#print the id's for matches on th first vert
 	print 'vert id %s matches are %s' % (0, groups[0])
