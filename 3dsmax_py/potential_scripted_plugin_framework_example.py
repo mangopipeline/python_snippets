@@ -36,12 +36,14 @@ class MyGameMaterial(ScriptedPlugin):
                                 ui=self.trans_spinner)  # QtWidget that drives it (should rely on QProperty for custom widgets) this widgets are declared in the re-implemented ui method
 
         # connect set event for parameter block
-        self.trans.set.connect(lambda x: setattr(self.delegate, 'opacity', x))  # PySide connection to parameter set event
+        self.trans.set.connect(lambda x: setattr(self.delegate, 'opacity', x))  # PySide 'style' connection to parameter set event
 
     def ui(self):
         """
         this would be a method in the ScriptedPlugin Class that would be optionally
         re implemented by the developer to add custom ui items
+
+        the expectation is that the instance would already have a main_widget available with a main layout (vertical) we could add qt widgets too 
         """
         # add a widget (spinner) to the UI
         self.trans_spinner = QtWidgets.QDoubleSpinBox(parent=self.main_widget)
