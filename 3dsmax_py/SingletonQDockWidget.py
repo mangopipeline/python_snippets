@@ -39,7 +39,7 @@ class CustomMaxDockWiget(SingletonDockWidgetType('CustomMaxDockWiget', (QtWidget
         super(CustomMaxDockWiget, self).__init__(*args, **kwargs)
 
 '''
-out actual tool we will be writting!
+our actual tool we will be writting!
 
 '''
 class MyMaxTool(CustomMaxDockWiget):
