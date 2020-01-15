@@ -3,6 +3,7 @@ this code is an example of how a singleton qdialog could be implemented in max
 singleton are useful when you are trying to make sure that only one instnace of the particular tool can exist during the session.
 they are also helpful when trying to quickly retrive that instance anywhere in the session...
 '''
+
 from PySide2 import QtWidgets
 import shiboken2  as shibo 
 from pymxs import runtime as mxs 
@@ -39,13 +40,13 @@ class CustomMaxDockWiget(SingletonDockWidgetType('CustomMaxDockWiget', (QtWidget
         super(CustomMaxDockWiget, self).__init__(*args, **kwargs)
 
 '''
-our actual tool we will be writting!
+out actual tool we will be writting!
 
 '''
 class MyMaxTool(CustomMaxDockWiget):
     def __init__(self, *args, **kwargs):
         super(MyMaxTool, self).__init__(*args, **kwargs)
-
+        self.setFloating(True)
         # set a master widget to work with...
         self._master_widget = QtWidgets.QWidget(parent=self)
         self.setWidget(self._master_widget)
@@ -62,4 +63,7 @@ def open_my_tool():
         return tool 
     tool.show()
     return tool
+    
+if __name__== '__main__':
+    open_my_tool()
     
