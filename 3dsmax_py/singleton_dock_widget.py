@@ -10,7 +10,7 @@ from pymxs import runtime as mxs
 
 #this is a generic method for getting the max parent window... you could store this in a global libarary
 def max_parent_window():
-    main_window=QtWidgets.QWidget.find(pymxs.runtime.windows.getMAXHWND())
+    main_window=QtWidgets.QWidget.find(mxs.windows.getMAXHWND())
     return shibo.wrapInstance(shibo.getCppPointer(main_window)[0], QtWidgets.QMainWindow)
 
 #this is a  super simlple singleton mechanism  this could also live in a global libarary you reuse
